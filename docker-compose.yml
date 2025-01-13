@@ -1,0 +1,10 @@
+services:
+  postgres:
+    container_name: path_academy_postgres
+    image: postgres
+    ports:
+      - "5435:5432"
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=path_academy
