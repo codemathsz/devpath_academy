@@ -30,4 +30,24 @@ public class ExceptionHandlerController {
 
         return new ResponseEntity<>(dto, HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler(CourseNotFoundException.class)
+    public ResponseEntity<ErrorMessageResponseDTO> handleExceptionCourseNotFound(CourseNotFoundException e){
+        var responseBody = ErrorMessageResponseDTO.builder()
+                .message(e.getMessage())
+                .field("Course id")
+                .build();
+
+        return new ResponseEntity<>(responseBody, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(CategoryNotFoundException.class)
+    public ResponseEntity<ErrorMessageResponseDTO> handleExceptionCategoryNotFound(CategoryNotFoundException e){
+        var responseBody = ErrorMessageResponseDTO.builder()
+                .message(e.getMessage())
+                .field("categoryId")
+                .build();
+
+        return new ResponseEntity<>(responseBody, HttpStatus.BAD_REQUEST);
+    }
 }
