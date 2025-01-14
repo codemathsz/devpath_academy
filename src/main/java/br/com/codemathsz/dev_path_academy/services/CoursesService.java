@@ -65,4 +65,12 @@ public class CoursesService {
         this.repository.deleteById(UUID.fromString(id));
         return ResponseEntity.ok().body("Curso deletado");
     }
+
+    public Coursers activeCourse(String id){
+        var course =this.repository.findById(UUID.fromString(id))
+            .orElseThrow(() -> new CourseNotFoundException(id)
+        );
+        course.setActive(!course.isActive());
+        return this.repository.save(course);
+    }
 }

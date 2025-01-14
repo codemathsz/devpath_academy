@@ -37,4 +37,9 @@ public class CourseController {
     public ResponseEntity<Object> delete(@PathVariable String id){
         return this.service.deleteCourseById(id);
     }
+
+    @PatchMapping("/{id}/active")
+    public Coursers active(@PathVariable String id){
+        return this.service.activeCourse(id);
+    }
 }
