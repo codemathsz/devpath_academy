@@ -57,4 +57,12 @@ public class CoursesService {
         var result = this.repository.save(course);
         return ResponseEntity.ok().body(result);
     }
+
+    public ResponseEntity<Object> deleteCourseById(String id){
+        this.repository.findById(UUID.fromString(id))
+            .orElseThrow(() -> new CourseNotFoundException(id)
+        );
+        this.repository.deleteById(UUID.fromString(id));
+        return ResponseEntity.ok().body("Curso deletado");
+    }
 }

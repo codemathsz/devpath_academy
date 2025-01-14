@@ -32,4 +32,9 @@ public class CourseController {
     public ResponseEntity<Coursers> update(@PathVariable String id, @RequestBody UpdateCourseDTO courseDTO){
         return this.service.updateById(id, courseDTO);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Object> delete(@PathVariable String id){
+        return this.service.deleteCourseById(id);
+    }
 }
