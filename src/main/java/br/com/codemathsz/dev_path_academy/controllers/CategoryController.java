@@ -1,5 +1,6 @@
 package br.com.codemathsz.dev_path_academy.controllers;
 
+import br.com.codemathsz.dev_path_academy.dtos.UpdateCategoryDTO;
 import br.com.codemathsz.dev_path_academy.models.Category;
 import br.com.codemathsz.dev_path_academy.services.CategoryService;
 import jakarta.validation.Valid;
@@ -25,5 +26,10 @@ public class CategoryController {
     @GetMapping("/")
     public ResponseEntity<List<Category>> getAll(){
         return ResponseEntity.ok().body(this.service.getAllCategories());
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Object> update(@PathVariable String id,@Valid @RequestBody UpdateCategoryDTO categoryDTO){
+        return this.service.updateById(id, categoryDTO);
     }
 }
